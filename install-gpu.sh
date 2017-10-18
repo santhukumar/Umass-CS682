@@ -40,7 +40,8 @@ nvidia-smi
 #installing cudnn6
 CUDNN_TAR_FILE="cudnn-8.0-linux-x64-v6.0.tgz"
 wget http://developer.download.nvidia.com/compute/redist/cudnn/v6.0/${CUDNN_TAR_FILE}
-tar -xzvf ${CUDNN_TAR_FILE}echo 'export PATH=$PATH:/usr/local/cuda/bin' >> $HOME/.profile; source $HOME/.profile
+tar -xzvf ${CUDNN_TAR_FILE}
+echo 'export PATH=$PATH:/usr/local/cuda/bin' >> $HOME/.profile; source $HOME/.profile
 sudo cp -P cuda/include/cudnn.h /usr/local/cuda-8.0/include
 sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda-8.0/lib64/
 sudo chmod a+r /usr/local/cuda-8.0/lib64/libcudnn*
@@ -54,11 +55,12 @@ echo 'export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH' >> ~/.p
 
 
 #tensor flow recommends us to use virtual env instead of using /usr/bin/python
-sudo apt-get install virtualenv
-sudo apt-get install python-setuptools
+sudo apt-get -y  install virtualenv
+sudo apt-get -y  install python-setuptools
 sudo easy_install virtualenv
 virtualenv $HOME/venv
 echo 'source venv/bin/activate' >> $HOME/.profile
+source ~/.profile
 
 pip install tensorflow-gpu
 # If tensor flow is installed properly you can check the installation with below command. 
