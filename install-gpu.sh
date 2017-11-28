@@ -58,6 +58,12 @@ echo 'export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH' >> ~/.p
 sudo apt-get -y  install virtualenv
 sudo apt-get -y  install python-setuptools
 sudo easy_install virtualenv
+
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+sudo dpkg-reconfigure locales
+
+
 virtualenv $HOME/venv
 echo 'source venv/bin/activate' >> $HOME/.profile
 source ~/.profile
